@@ -34,18 +34,18 @@ public class Main {
     }
 
     private static double discount() {
-        double taxRateA =5;
-        double taxRateB =10;
-        double taxRateC =15;
+        double discountRateA =5;
+        double discountRateB =10;
+        double discountRateC =15;
 
         if (income <= 5000) {
-            return income * taxRateA/100 ;
+            return income * discountRateA/100 ;
 
         } else if (income > 5000 & income <= 10000) {
-            return income * taxRateB/100;
+            return income * discountRateB/100;
 
         } else if (income > 10000) {
-            return income * taxRateC/100;
+            return income * discountRateC/100;
         }
     }
 
@@ -67,7 +67,7 @@ public class Main {
     }
 
     private static double calculateDiscount(double income) {
-        return income * taxRateA / 100;
+        return income * discountRateA / 100;
     }
 
     private static double calcPureIncome(double income, double discount) {
