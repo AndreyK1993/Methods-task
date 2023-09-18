@@ -3,7 +3,7 @@ import java.util.Currency;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 public class Main {
-    static String CURRENCY = "EUR";
+    private static final String CURRENCY = "EUR";
     static double quantity;
     static double price;
     static double income;
@@ -14,7 +14,6 @@ public class Main {
     static String pureIncomeRounded;
 
     public static void main(String[] args) {
-        AmountToPay();
         discount();
         amountToPay();
 
@@ -25,12 +24,11 @@ public class Main {
         int price = sc1.nextInt();
         int quantity = sc2.nextInt();
 
-        sc1.close();
-        sc2.close();
-    }
-    private double income() {
         income = calcIncome(quantity, price);
         incomeRounded = roundValue(income);
+        //????
+        sc1.close();
+        sc2.close();
     }
 
     private static double discount() {
@@ -47,14 +45,12 @@ public class Main {
         } else if (income > 10000) {
             return income * discountRateC/100;
         }
-    }
 
-    public double discount() {
         double discount = calculateDiscount();
         return income - discount;
     }
 
-    public double amountToPay() {
+    public static void amountToPay() {
         double discount = calculateDiscount();
         double amountToPay = calculateAmountToPay() ;
 
@@ -65,15 +61,12 @@ public class Main {
     private static double calcIncome(double quantity, double price) {
         return quantity * price;
     }
-
     private static double calculateDiscount(double income) {
         return income * discountRateA / 100;
     }
-
-    private static double calcPureIncome(double income, double discount) {
+    private static double calculateAmountToPay(double income, double discount) {
         return income - discount;
     }
-
     public static String roundValue(double value){
         return new DecimalFormat("#.00").format(value);
     }
