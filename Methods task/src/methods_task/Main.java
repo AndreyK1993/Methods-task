@@ -6,9 +6,15 @@ public class Main {
     static String CURRENCY = "EUR";
     static double quantity;
     static double price;
+    static double income;
+    static String incomeRounded;
+    static double discount;
+    static String discountRounded;
+    static double pureIncome;
+    static String pureIncomeRounded;
 
     public static void main(String[] args) {
-        totalPurchaseAmount();
+        AmountToPay();
         discount();
         amountToPay();
 
@@ -22,7 +28,7 @@ public class Main {
         sc1.close();
         sc2.close();
     }
-    public double income() {
+    private double income() {
         income = calcIncome(quantity, price);
         incomeRounded = roundValue(income);
     }
@@ -52,9 +58,9 @@ public class Main {
         double discount = calculateDiscount();
         double amountToPay = calculateAmountToPay() ;
 
-        !!!incomeRounded = roundValue(income);
-        !!!discountRounded = roundValue(discount);
-        !!!pureIncomeRounded = roundValue(pureIncome);
+        incomeRounded = roundValue(income);
+        discountRounded = roundValue(discount);
+        pureIncomeRounded = roundValue(pureIncome);
     }
     private static double calcIncome(double quantity, double price) {
         return quantity * price;
