@@ -10,8 +10,8 @@ public class Main {
     static String incomeRounded;
     static double discount;
     static String discountRounded;
-    static double pureIncome;
-    static String pureIncomeRounded;
+    static double amountToPay;
+    static String amountToPayRounded;
 
     public static void main(String[] args) {
         discount();
@@ -56,7 +56,7 @@ public class Main {
 
         incomeRounded = roundValue(income);
         discountRounded = roundValue(discount);
-        pureIncomeRounded = roundValue(pureIncome);
+        amountToPayRounded = roundValue(amountToPay);
     }
     private static double calcIncome(double quantity, double price) {
         return quantity * price;
@@ -64,7 +64,7 @@ public class Main {
     private static double calculateDiscount(double income) {
         return income * discountRateA / 100;
     }
-    private static double calculateAmountToPay(double income, double discount) {
+    private static double calculateAmountToPay (double income, double discount) {
         return income - discount;
     }
     public static String roundValue(double value){
