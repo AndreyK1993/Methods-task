@@ -57,6 +57,15 @@ public class Main {
         incomeRounded = roundValue(income);
         discountRounded = roundValue(discount);
         amountToPayRounded = roundValue(amountToPay);
+        getOutput();
+    }
+
+    private static void getOutput() {
+        System.out.println(
+                + "\nIncome, " + CURRENCY + ": " + incomeRounded
+                + "\nTax, " + CURRENCY + ": " + discountRounded
+                + "\nAmount To Pay, " + CURRENCY + ": " + amountToPayRounded + "\n"
+        );
     }
     private static double calcIncome(double quantity, double price) {
         return quantity * price;
