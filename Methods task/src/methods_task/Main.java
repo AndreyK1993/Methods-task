@@ -6,8 +6,8 @@ public class Main {
     static double income;
     static String incomeRounded;
     static double discount;
-    static String discountRounded;
-    static double amountToPay;
+    //static String discountRounded;
+    //static double amountToPay;
     static String amountToPayRounded;
     static double discountRateA =5;
     static double discountRateB =10;
@@ -54,7 +54,7 @@ public class Main {
     private static void getOutput() {
         System.out.println(
                 "\n" + "Income, " + CURRENCY + ": " + incomeRounded
-                        + "\nDiscount, " + CURRENCY + ": " + discountRounded
+                        + "\nDiscount, " + CURRENCY + ": " + discount
                         + "\nAmount To Pay, " + CURRENCY + ": " + amountToPayRounded + "\n"
         );
     }
