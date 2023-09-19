@@ -12,6 +12,9 @@ public class Main {
     static String discountRounded;
     static double amountToPay;
     static String amountToPayRounded;
+    static double discountRateA =5;
+    static double discountRateB =10;
+    static double discountRateC =15;
 
     public static void main(String[] args) {
         discount();
@@ -21,8 +24,8 @@ public class Main {
         Scanner sc2 = new Scanner(System.in);
         System.out.println("Input Price product: ");
         System.out.println("Input quantity: ");
-        int price = sc1.nextInt();
-        int quantity = sc2.nextInt();
+        double price = sc1.nextInt();
+        double quantity = sc2.nextInt();
 
         income = calcIncome(quantity, price);
         incomeRounded = roundValue(income);
@@ -32,11 +35,8 @@ public class Main {
     }
 
     private static double discount() {
-        double discountRateA =5;
-        double discountRateB =10;
-        double discountRateC =15;
 
-        if (income <= 5000) {
+        if (income>0 && income <= 5000) {
             return income * discountRateA/100 ;
 
         } else if (income > 5000 & income <= 10000) {
@@ -46,13 +46,13 @@ public class Main {
             return income * discountRateC/100;
         }
 
-        double discount = calculateDiscount();
+        double discount = calculateDiscount(income);
         return income - discount;
     }
 
     public static void amountToPay() {
-        double discount = calculateDiscount();
-        double amountToPay = calculateAmountToPay() ;
+        double discount = calculateDiscount(income);
+        double amountToPay = calculateAmountToPay(income, discount) ;
 
         incomeRounded = roundValue(income);
         discountRounded = roundValue(discount);
@@ -63,16 +63,24 @@ public class Main {
     private static void getOutput() {
         System.out.println(
                 + "\nIncome, " + CURRENCY + ": " + incomeRounded
-                + "\nTax, " + CURRENCY + ": " + discountRounded
-                + "\nAmount To Pay, " + CURRENCY + ": " + amountToPayRounded + "\n"
+                        + "\nDiscount, " + CURRENCY + ": " + discountRounded
+                        + "\nAmount To Pay, " + CURRENCY + ": " + amountToPayRounded + "\n"
         );
     }
     private static double calcIncome(double quantity, double price) {
         return quantity * price;
     }
+
     private static double calculateDiscount(double income) {
         return income * discountRateA / 100;
     }
+    private static double calculateDiscount(double income) {
+        return income * discountRateB / 100;
+    }
+    private static double calculateDiscount(double income) {
+        return income * discountRateC / 100;
+    }
+
     private static double calculateAmountToPay (double income, double discount) {
         return income - discount;
     }
