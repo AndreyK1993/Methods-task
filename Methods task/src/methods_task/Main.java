@@ -6,12 +6,8 @@ public class Main {
     static double income;
     static String incomeRounded;
     static double discount;
-    //static String discountRounded;
-    //static double amountToPay;
     static String amountToPayRounded;
-    static double discountRateA =5;
-    static double discountRateB =10;
-    static double discountRateC =15;
+    static double[] discountRates = {5, 10, 15};
 
     public static void main(String[] args) {
 
@@ -34,13 +30,13 @@ public class Main {
     public static void discount() {
 
         if (income>0 && income <= 5000) {
-            discount = income * discountRateA/100 ;
+            discount = income * discountRates[0]/100 ;
 
         } else if (income > 5000 & income <= 10000) {
-            discount = income * discountRateB/100;
+            discount = income * discountRates[1]/100;
 
         } else if (income > 10000) {
-            discount = income * discountRateC/100;
+            discount = income * discountRates[2]/100;
         }
 
     }
