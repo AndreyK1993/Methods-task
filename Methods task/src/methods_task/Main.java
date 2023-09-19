@@ -1,6 +1,9 @@
 package methods_task;
+
 import java.util.Scanner;
+
 import java.text.DecimalFormat;
+
 public class Main {
     private static final String CURRENCY = "EUR";
     static double income;
@@ -11,20 +14,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        Scanner sc1 = new Scanner(System.in);
-        System.out.println("Input Price product: ");
-        double price = sc1.nextInt();
-
-        Scanner sc2 = new Scanner(System.in);
-        System.out.println("Input quantity: ");
-        double quantity = sc2.nextInt();
+        double price = readDoubleInput("Input Price product: ");
+        double quantity = readDoubleInput("Input quantity: ");
 
         income = calcIncome(quantity, price);
         incomeRounded = roundValue(income);
 
         discount();
         amountToPay();
+    }
+
+    private static double readDoubleInput(String prompt) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt);
+        return scanner.nextDouble();
     }
 
     public static void discount() {
