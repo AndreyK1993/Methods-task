@@ -1,11 +1,8 @@
 package methods_task;
-import java.util.Currency;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 public class Main {
     private static final String CURRENCY = "EUR";
-    static double quantity;
-    static double price;
     static double income;
     static String incomeRounded;
     static double discount;
@@ -17,52 +14,46 @@ public class Main {
     static double discountRateC =15;
 
     public static void main(String[] args) {
-        discount();
-        amountToPay();
+
 
         Scanner sc1 = new Scanner(System.in);
-        Scanner sc2 = new Scanner(System.in);
         System.out.println("Input Price product: ");
-        System.out.println("Input quantity: ");
         double price = sc1.nextInt();
+
+        Scanner sc2 = new Scanner(System.in);
+        System.out.println("Input quantity: ");
         double quantity = sc2.nextInt();
 
         income = calcIncome(quantity, price);
         incomeRounded = roundValue(income);
-        //????
-        sc1.close();
-        sc2.close();
+
+        discount();
+        amountToPay();
     }
 
-    private static double discount() {
+    public static void discount() {
 
         if (income>0 && income <= 5000) {
-            return income * discountRateA/100 ;
+            discount = income * discountRateA/100 ;
 
         } else if (income > 5000 & income <= 10000) {
-            return income * discountRateB/100;
+            discount = income * discountRateB/100;
 
         } else if (income > 10000) {
-            return income * discountRateC/100;
+            discount = income * discountRateC/100;
         }
 
-        double discount = calculateDiscount(income);
-        return income - discount;
     }
 
     public static void amountToPay() {
-        double discount = calculateDiscount(income);
-        double amountToPay = calculateAmountToPay(income, discount) ;
-
-        incomeRounded = roundValue(income);
-        discountRounded = roundValue(discount);
+        double amountToPay = income - discount;
         amountToPayRounded = roundValue(amountToPay);
         getOutput();
     }
 
     private static void getOutput() {
         System.out.println(
-                + "\nIncome, " + CURRENCY + ": " + incomeRounded
+                "\n" + "Income, " + CURRENCY + ": " + incomeRounded
                         + "\nDiscount, " + CURRENCY + ": " + discountRounded
                         + "\nAmount To Pay, " + CURRENCY + ": " + amountToPayRounded + "\n"
         );
@@ -71,19 +62,6 @@ public class Main {
         return quantity * price;
     }
 
-    private static double calculateDiscount(double income) {
-        return income * discountRateA / 100;
-    }
-    private static double calculateDiscount(double income) {
-        return income * discountRateB / 100;
-    }
-    private static double calculateDiscount(double income) {
-        return income * discountRateC / 100;
-    }
-
-    private static double calculateAmountToPay (double income, double discount) {
-        return income - discount;
-    }
     public static String roundValue(double value){
         return new DecimalFormat("#.00").format(value);
     }
