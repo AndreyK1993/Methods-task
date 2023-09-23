@@ -20,7 +20,7 @@ public class Main {
         income = calcIncome(quantity, price);
         incomeRounded = roundValue(income);
 
-        discount();
+        discount=calcDiscount(income);
         amountToPay();
     }
 
@@ -31,17 +31,18 @@ public class Main {
         return scanner.nextDouble();
     }
 
-    public static void discount() {
+    public static double calcDiscount(double income) {
 
-        if (income>0 && income <= 5000) {
-            discount = income * discountRates[0]/100 ;
+        if (income > 0 && income <= 5000) {
+            return income * discountRates[0] / 100;
 
         } else if (income > 5000 & income <= 10000) {
-            discount = income * discountRates[1]/100;
+            return income * discountRates[1] / 100;
 
         } else if (income > 10000) {
-            discount = income * discountRates[2]/100;
+            return income * discountRates[2] / 100;
         }
+        return income;
 
     }
 
